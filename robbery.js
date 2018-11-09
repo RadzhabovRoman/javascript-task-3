@@ -9,7 +9,7 @@ const isStar = false;
 /**
  * КОНСТАНТЫ, КОТОРЫЕ БУДУТ ИСПОЛЬЗОВАТЬСЯ ПОЧТИ ВЕЗДЕ
  */
-const HOUR_IN_DAY = 24;
+const HOURS_IN_DAY = 24;
 const MINUTES_IN_DAY = 1440;
 const MINUTES_IN_HOUR = 60;
 
@@ -22,10 +22,10 @@ const MINUTES_IN_HOUR = 60;
 function getDayShiftHours(str) {
     let dayShift = 0;
     if (str === 'ВТ') {
-        dayShift = HOUR_IN_DAY;
+        dayShift = HOURS_IN_DAY;
     }
     if (str === 'СР') {
-        dayShift = HOUR_IN_DAY * 2;
+        dayShift = HOURS_IN_DAY * 2;
     }
 
     return dayShift;
@@ -65,7 +65,7 @@ function convertBankTimeToInterval(bankTime) {
     let toHour = parseInt(bankTime.to.substring(0, 2), 10);
     let toMin = parseInt(bankTime.to.substring(3, 5), 10);
     let arrayOfIntervals = [];
-    for (let day = 0; day <= HOUR_IN_DAY * 2; day += HOUR_IN_DAY) {
+    for (let day = 0; day <= HOURS_IN_DAY * 2; day += HOURS_IN_DAY) {
         let interval = {};
         interval.from = MINUTES_IN_HOUR * day + fromHour * MINUTES_IN_HOUR + fromMin;
         interval.to = MINUTES_IN_HOUR * day + toHour * MINUTES_IN_HOUR + toMin;
